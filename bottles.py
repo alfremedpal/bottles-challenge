@@ -43,10 +43,10 @@ class BottleSong:
         range -- used to print out correctly total number of bottles when using sing_range method
         """
         if bottle_count == 0:
-            verse = self.get_no_bottles(bottle_count=range)
+            verse = self._get_no_bottles(bottle_count=range)
         else:
-            verse = f"""{bottle_count} {self.check_container_plural(bottle_count)} of {self.drink} on the wall, {bottle_count} {self.check_container_plural(bottle_count)} of {self.drink}.
-Take one down and pass it around, {'no more' if bottle_count - 1 == 0 else bottle_count - 1} {self.check_container_plural(bottle_count - 1)} of {self.drink} on the wall.\n\n"""
+            verse = f"""{bottle_count} {self._check_container_plural(bottle_count)} of {self.drink} on the wall, {bottle_count} {self._check_container_plural(bottle_count)} of {self.drink}.
+Take one down and pass it around, {'no more' if bottle_count - 1 == 0 else bottle_count - 1} {self._check_container_plural(bottle_count - 1)} of {self.drink} on the wall.\n\n"""
 
         if display:
             print(verse)
@@ -80,15 +80,15 @@ Take one down and pass it around, {'no more' if bottle_count - 1 == 0 else bottl
 
         return verses
 
-    def get_no_bottles(self, bottle_count=None):
+    def _get_no_bottles(self, bottle_count=None):
         """Returns the corresponding verse when there are no more bottles"""
         if bottle_count is None:
             bottle_count = self.n
 
-        return f"""No more {self.check_container_plural(0)} of {self.drink} on the wall, no more {self.check_container_plural(0)} of {self.drink}.
-Go to the store and buy some more, {bottle_count} {self.check_container_plural(0)} of {self.drink} on the wall."""
+        return f"""No more {self._check_container_plural(0)} of {self.drink} on the wall, no more {self._check_container_plural(0)} of {self.drink}.
+Go to the store and buy some more, {bottle_count} {self._check_container_plural(0)} of {self.drink} on the wall."""
 
-    def check_container_plural(self, bottle_count):
+    def _check_container_plural(self, bottle_count):
         """Returns correct format on container depending on count"""
         container = self.container
         if bottle_count != 1:
