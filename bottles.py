@@ -43,7 +43,8 @@ class BottleSong:
         if bottle_count == 0:
             verse = self.get_no_bottles()
         else:
-            verse = f"{bottle_count} {self.check_container_plural(bottle_count)} of {self.drink} on the wall. {bottle_count} {self.check_container_plural(bottle_count)} of {self.drink}. Take one down, pass it around, {bottle_count - 1} {self.check_container_plural(bottle_count - 1)} of {self.drink} on the wall\n"
+            verse = f"""{bottle_count} {self.check_container_plural(bottle_count)} of {self.drink} on the wall, {bottle_count} {self.check_container_plural(bottle_count)} of {self.drink}.
+Take one down and pass it around, {'no more' if bottle_count - 1 == 0 else bottle_count - 1} {self.check_container_plural(bottle_count - 1)} of {self.drink} on the wall.\n\n"""
 
         if display:
             print(verse)
@@ -52,7 +53,8 @@ class BottleSong:
 
     def get_no_bottles(self):
         """Returns the corresponding verse when there are no more bottles"""
-        return f"No more {self.check_container_plural(0)} of {self.drink} on the wall, no more {self.check_container_plural(0)} of {self.drink}. Go to the store and buy some more, {self.n} {self.check_container_plural(0)} of {self.drink} on the wall..."
+        return f"""No more {self.check_container_plural(0)} of {self.drink} on the wall, no more {self.check_container_plural(0)} of {self.drink}.
+Go to the store and buy some more, {self.n} {self.check_container_plural(0)} of {self.drink} on the wall."""
 
     def check_container_plural(self, bottle_count):
         """Returns correct format on container depending on count"""
@@ -65,7 +67,7 @@ class BottleSong:
 
 if __name__ == "__main__":
 
-    bottle = BottleSong(drink="milk", container="can", n=89)
+    bottle = BottleSong()
     bottle.sing()
     # bottle.sing_one(3)
     # bottle.sing_one(2)
